@@ -159,7 +159,6 @@ const ETAPAS=[
  {tit:"Seu objetivo",sub:"O que você busca com o tratamento.",campos:[
   {id:"objetivos",t:"multi",q:"Quais são seus objetivos?",h:"Pode marcar mais de um.",obr:1,pr:"METAS",
    op:["Emagrecer","Ganhar massa muscular","Melhorar a composição corporal","Mais energia e disposição","Saúde e longevidade","Performance esportiva","Outro"]},
-  {id:"objetivo_txt",t:"area",q:"Conte com suas palavras o que espera do tratamento",pr:"EXPECTATIVA"},
   {id:"peso",t:"num",q:"Peso atual",un:"kg",obr:1,min:25,max:350,pr:"PESO REFERIDO"},
   {id:"altura",t:"num",q:"Altura",un:"cm",obr:1,min:100,max:230,pr:"ALTURA"},
   {id:"peso_desejado",t:"num",q:"Peso que gostaria de alcançar",un:"kg",min:25,max:350,pr:"PESO DESEJADO"}
@@ -169,7 +168,7 @@ const ETAPAS=[
   {id:"inicio_ganho",t:"texto",q:"Quando começou o ganho de peso?",ph:"Ex.: após a gestação, na adolescência…",pr:"INÍCIO DO GANHO"},
   {id:"tratamentos",t:"multi",q:"O que já tentou para emagrecer?",obr:1,pr:"TRATAMENTOS PRÉVIOS",
    op:["Nunca fiz tratamento","Dietas por conta própria","Acompanhamento com nutricionista","Remédios para emagrecer","Canetas (Ozempic, Mounjaro, Wegovy…)","Outro"]},
-  {id:"tratamentos_txt",t:"area",q:"Quais remédios ou canetas usou, e como foi?",h:"Nome, dose, tempo de uso e resultado, se lembrar.",pr:"DETALHES",
+  {id:"tratamentos_txt",t:"texto",q:"Quais remédios ou canetas já usou?",ph:"Ex.: Ozempic, Mounjaro",pr:"DETALHES",
    cond:s=>(s.tratamentos||[]).some(x=>/Remédios|Canetas|Outro/.test(x))},
   {id:"bariatrica",t:"radio",q:"Já fez cirurgia bariátrica?",op:["Não","Sim"],c2:1,obr:1,pr:"BARIÁTRICA"},
   {id:"bariatrica_txt",t:"texto",q:"Qual cirurgia e em que ano?",ph:"Ex.: bypass, 2019",pr:"TIPO/ANO",cond:s=>s.bariatrica==="Sim"}
@@ -177,21 +176,16 @@ const ETAPAS=[
  {tit:"Comorbidades e doenças prévias",sub:"Algumas condições mudam a escolha dos medicamentos. Responda com atenção.",campos:[
   {id:"seguranca",t:"multi",q:"Você tem ou já teve alguma destas condições?",h:"Pode marcar mais de uma.",obr:1,pr:"COMORBIDADES",
    op:["Nenhuma destas","Diabetes","Pré-diabetes / resistência à insulina","Pressão alta (hipertensão)","Colesterol ou triglicerídeos altos","Gordura no fígado","Hipotireoidismo","Síndrome dos ovários policísticos","Apneia do sono","Refluxo / gastrite","Ansiedade ou depressão","Pancreatite (inflamação no pâncreas)","Câncer medular de tireoide – em mim ou na família","Neoplasia endócrina múltipla tipo 2 (NEM 2) – em mim ou na família","Pedra na vesícula ou cirurgia de retirada da vesícula","Gastroparesia (estômago que esvazia devagar)","Retinopatia diabética (problema na retina causado pelo diabetes)","Doença renal crônica ou hemodiálise","Transtorno alimentar (anorexia, bulimia ou compulsão alimentar)","Outra"]},
-  {id:"seguranca_txt",t:"texto",q:"Conte um pouco mais (qual outra condição, ano, detalhes)",ph:"Ex.: pancreatite em 2020; câncer de tireoide no pai",pr:"DETALHES",cond:s=>(s.seguranca||[]).some(x=>!/^Nenhuma/.test(x))}
+  {id:"seguranca_txt",t:"texto",q:"Se outra, qual?",pr:"OUTRAS",cond:s=>(s.seguranca||[]).includes("Outra")}
  ]},
- {tit:"Remédios e histórico familiar",sub:"",campos:[
+ {tit:"Remédios e alergias",sub:"",campos:[
   {id:"medicacoes",t:"area",q:"Remédios que usa atualmente",h:"Nome e dose. Se não usa nenhum, escreva “nenhum”.",obr:1,pr:"MEDICAÇÕES EM USO"},
-  {id:"suplementos",t:"area",q:"Suplementos, vitaminas ou fitoterápicos que usa",pr:"SUPLEMENTOS"},
-  {id:"alergias",t:"texto",q:"Alergias a remédios ou alimentos",ph:"Se não tem, deixe em branco",pr:"ALERGIAS"},
-  {id:"cirurgias",t:"texto",q:"Cirurgias que já fez",pr:"CIRURGIAS PRÉVIAS"},
-  {id:"familia",t:"multi",q:"Algum familiar próximo (pais ou irmãos) tem:",pr:"ANTECEDENTES FAMILIARES",
-   op:["Obesidade","Diabetes","Pressão alta","Infarto ou AVC","Câncer","Doença da tireoide","Nenhum / não sei"]}
+  {id:"alergias",t:"texto",q:"Alergias a remédios ou alimentos",ph:"Se não tem, deixe em branco",pr:"ALERGIAS"}
  ]},
  {tit:"Saúde da mulher",sub:"",cond:F,campos:[
   {id:"gestacao",t:"radio",q:"Está grávida, amamentando ou planejando engravidar nos próximos 6 meses?",obr:1,pr:"GESTAÇÃO/LACTAÇÃO",op:["Não","Estou grávida","Estou amamentando","Planejo engravidar"],c2:1},
-  {id:"ciclo",t:"radio",q:"Como está seu ciclo menstrual?",pr:"CICLO",op:["Regular","Irregular","Não menstruo (menopausa)","Não menstruo (anticoncepcional contínuo / DIU)"]},
-  {id:"hormonio",t:"texto",q:"Usa anticoncepcional ou reposição hormonal? Qual?",pr:"CONTRACEPÇÃO/TRH"},
-  {id:"gestacoes",t:"texto",q:"Número de gestações",ph:"Ex.: 2",pr:"GESTAÇÕES"}
+  {id:"ciclo",t:"radio",q:"Como está seu ciclo menstrual?",pr:"CICLO",op:["Regular","Irregular","Não menstruo"],c2:1},
+  {id:"hormonio",t:"radio",q:"Usa algum método hormonal?",pr:"CONTRACEPÇÃO/TRH",op:["Não","Pílula","DIU, implante, injeção ou anel","Reposição hormonal"]}
  ]},
  {tit:"Seu jeito de comer",sub:"Marque com que frequência cada situação acontece com você. Não existe resposta certa ou errada.",campos:[{id:"efca",t:"efca"}]},
  {tit:"Exames (opcional)",sub:"Última etapa! Se não tiver exames, é só enviar.",campos:[
@@ -417,14 +411,8 @@ async function enviar(){
 }
 function telaFim(ef){
   $("v-form").hidden=true; $("nav").hidden=true;
-  const itens=(ef&&ef.itens)||[];
   $("v-fim").innerHTML=`<div class="card center"><div class="big-ico">✓</div><h2>Pré-consulta enviada!</h2>
-    <p class="lead" style="margin:6px 0 0">Obrigado${PNOME?", "+esc(PNOME):""}. Suas respostas já estão com o Dr. Adriano.</p></div>
-    <div style="height:16px"></div>
-    <div class="card"><h2 style="font-size:1.2rem">Um retrato do seu jeito de comer</h2>
-    ${itens.length?`<p class="lead" style="margin:4px 0 0">Pelas suas respostas, estes pontos aparecem na sua rotina:</p><div class="res">${itens.map(i=>`<div class="it"><span>${esc(i.intensidade)}</span><b>${esc(i.titulo)}</b><p>${esc(i.texto)}</p></div>`).join("")}</div>`
-      :`<p class="lead" style="margin:4px 0 0">Suas respostas não mostraram nenhum padrão alimentar que chame atenção. Ótimo ponto de partida!</p>`}
-    <div class="note">Isto não é um diagnóstico. É apenas um retrato dos seus hábitos, que o Dr. Adriano vai conversar com você na consulta para montar um plano do seu jeito.</div></div>`;
+    <p class="lead" style="margin:6px 0 0">Obrigado${PNOME?", "+esc(PNOME):""}. Suas respostas já estão com o Dr. Adriano e serão conversadas na sua consulta.</p></div>`;
   $("v-fim").hidden=false; window.scrollTo({top:0});
 }
 iniciarPagina();
