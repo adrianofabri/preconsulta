@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<base target="_blank">
+<title>Pré-consulta · Dr. Adriano Fabri Domingues</title>
+<meta name="robots" content="noindex,nofollow">
+<meta name="referrer" content="no-referrer">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Marcellus&family=Instrument+Sans:wght@400;500;600;700&display=swap">
+<style>
+:root{--bg:#f6f3ee;--surface:#fff;--surface2:#fbf8f3;--ink:#221d16;--muted:#6f675b;--line:#e6dfd3;--accent:#8a6624;--accent-ink:#fff;--accent-soft:#f4ecdc;--gold:#b8913f;--ok:#1f7a4d;--ok-soft:#e3f3ea;--late:#b3261e;--late-soft:#fbe5e3;
+--f-display:"Marcellus",Georgia,serif;--f-body:"Instrument Sans",system-ui,sans-serif}
+*{box-sizing:border-box}[hidden]{display:none!important}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.5}
+.wrap{max-width:640px;margin:0 auto;padding:18px 16px 110px}
+.top{display:flex;align-items:center;gap:12px;padding-bottom:14px;border-bottom:1px solid var(--line);margin-bottom:18px}
+.top img{height:54px;width:auto}
+.mono{width:46px;height:46px;border-radius:50%;border:1.5px solid var(--gold);display:grid;place-items:center;font-family:var(--f-display);color:var(--accent);font-size:1.15rem;letter-spacing:.04em;flex:none}
+.top .n{font-family:var(--f-display);font-size:1.08rem;line-height:1.2}
+.top .s{font-size:.78rem;color:var(--muted)}
+.hero{text-align:center;margin:0 0 18px;padding:2px 0 16px;border-bottom:1px solid var(--line)}
+.hero img{display:block;width:min(64vw,240px);height:auto;margin:0 auto}
+h1{font-family:var(--f-display);font-weight:400;font-size:1.65rem;line-height:1.2;margin:4px 0 8px}
+h2{font-family:var(--f-display);font-weight:400;font-size:1.35rem;margin:0 0 4px;line-height:1.25}
+.lead{color:var(--muted);margin:0 0 18px;font-size:.95rem}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px}
+.prog{position:sticky;top:0;z-index:5;background:var(--bg);padding:10px 0 12px;margin:-6px 0 8px}
+.prog .t{display:flex;justify-content:space-between;font-size:.76rem;color:var(--muted);font-weight:600;letter-spacing:.06em;text-transform:uppercase;margin-bottom:6px}
+.bar{height:6px;border-radius:99px;background:var(--line);overflow:hidden}
+.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--gold),var(--accent));border-radius:99px;transition:width .35s}
+.f{display:grid;gap:7px;margin-bottom:18px}
+.f>.q{font-weight:600;font-size:.98rem}
+.f>.q .opt{font-weight:400;color:var(--muted);font-size:.82rem}
+.f>.h{font-size:.82rem;color:var(--muted);margin-top:-4px}
+input,textarea,select{font:400 1rem var(--f-body);color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px;width:100%;min-width:0}
+textarea{resize:vertical;min-height:84px}
+input:focus,textarea:focus,button:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+.unit{display:grid;grid-template-columns:1fr auto;align-items:center;gap:8px}
+.unit span{color:var(--muted);font-size:.9rem;min-width:28px}
+.ops{display:grid;gap:8px}
+.ops.c2{grid-template-columns:1fr 1fr}
+.op{display:flex;align-items:center;gap:10px;border:1px solid var(--line);background:var(--surface);border-radius:10px;padding:11px 12px;cursor:pointer;text-align:left;font:500 .95rem var(--f-body);color:var(--ink);width:100%}
+.op::before{content:"";width:18px;height:18px;flex:none;border:1.5px solid #c9bfae;border-radius:50%}
+.op.m::before{border-radius:5px}
+.op[aria-pressed="true"]{border-color:var(--accent);background:var(--accent-soft)}
+.op[aria-pressed="true"]::before{border-color:var(--accent);background:var(--accent) radial-gradient(circle,#fff 0 3px,transparent 4px)}
+.op.m[aria-pressed="true"]::before{background:var(--accent) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3.5 8.5l3 3 6-7' fill='none' stroke='white' stroke-width='2'/%3E%3C/svg%3E") center/14px no-repeat}
+.ef{border:1px solid var(--line);border-radius:12px;padding:14px;background:var(--surface);margin-bottom:12px}
+.ef.err{border-color:var(--late);background:var(--late-soft)}
+.ef .q{font-weight:600;font-size:.96rem;margin-bottom:10px}
+.ef .q b{color:var(--accent);font-weight:700;margin-right:4px}
+.lik{display:grid;grid-template-columns:repeat(5,1fr);gap:5px}
+.lik button{border:1px solid var(--line);background:var(--surface2);border-radius:9px;padding:9px 2px;font:600 .74rem/1.15 var(--f-body);color:var(--ink);cursor:pointer;min-height:48px}
+.lik button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:#fff}
+.err-msg{background:var(--late-soft);color:var(--late);border-radius:10px;padding:10px 12px;font-size:.9rem;margin:0 0 14px}
+.nav{position:fixed;left:0;right:0;bottom:0;background:rgba(246,243,238,.96);backdrop-filter:blur(6px);border-top:1px solid var(--line);padding:12px 16px calc(12px + env(safe-area-inset-bottom))}
+.nav .in{max-width:640px;margin:0 auto;display:flex;gap:10px}
+.btn{border:0;background:var(--accent);color:#fff;font:600 1rem var(--f-body);padding:14px 18px;border-radius:12px;cursor:pointer;flex:1;display:inline-flex;justify-content:center;align-items:center;gap:8px}
+.btn.ghost{background:transparent;color:var(--accent);border:1px solid var(--line);flex:0 0 auto}
+.btn:disabled{opacity:.55;cursor:not-allowed}
+.drop{border:1.5px dashed #cdbf9f;border-radius:12px;background:var(--surface2);padding:18px;text-align:center;cursor:pointer;color:var(--muted);font-size:.92rem}
+.drop b{display:block;color:var(--accent);font-size:1rem;margin-bottom:2px}
+.files{list-style:none;margin:10px 0 0;padding:0;display:grid;gap:8px}
+.files li{display:flex;align-items:center;gap:10px;border:1px solid var(--line);background:var(--surface);border-radius:10px;padding:9px 12px;font-size:.88rem}
+.files li .nm{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.files li .st{color:var(--muted);font-size:.8rem;white-space:nowrap}
+.files li.ok .st{color:var(--ok)} .files li.er .st{color:var(--late)}
+.files li button{border:0;background:transparent;color:var(--muted);cursor:pointer;font-size:1rem;padding:2px 6px}
+.center{text-align:center}
+.big-ico{width:64px;height:64px;border-radius:50%;margin:8px auto 14px;display:grid;place-items:center;font-size:1.8rem;background:var(--ok-soft);color:var(--ok)}
+.big-ico.warn{background:var(--accent-soft);color:var(--accent)}
+.res{display:grid;gap:10px;text-align:left;margin-top:16px}
+.res .it{border:1px solid var(--line);border-left:3px solid var(--gold);border-radius:10px;padding:12px 14px;background:var(--surface)}
+.res .it b{display:block;font-family:var(--f-display);font-weight:400;font-size:1.05rem}
+.res .it span{font-size:.78rem;color:var(--accent);font-weight:600;text-transform:uppercase;letter-spacing:.06em}
+.res .it p{margin:4px 0 0;font-size:.92rem;color:var(--muted)}
+.note{font-size:.86rem;color:var(--muted);background:var(--surface2);border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin-top:16px;text-align:left}
+.pts{margin:14px 0 0;padding-left:20px;color:var(--muted);font-size:.93rem;display:grid;gap:4px}
+.saved{font-size:.78rem;color:var(--muted);text-align:center;margin-top:-6px;min-height:1.2em}
+.consent{display:flex;gap:10px;align-items:flex-start;font-size:.86rem;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin-top:14px;cursor:pointer;line-height:1.45}
+.consent input{width:20px;height:20px;flex:none;margin:1px 0 0;padding:0;accent-color:var(--accent)}
+.consent.err{border-color:var(--late);background:var(--late-soft)}
+.foot{font-size:.72rem;color:var(--muted);text-align:center;margin-top:26px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="hero"><img src="logo-redonda.png" alt="Dr. Adriano Fabri Domingues · Nutrologia"></div>
+
+  <!-- carregando -->
+  <div id="v-load" class="card center"></div>
+
+  <!-- estados sem formulário -->
+  <div id="v-msg" class="card center" hidden></div>
+
+  <!-- boas-vindas -->
+  <div id="v-ini" hidden>
+    <h1 id="ola"></h1>
+    <p class="lead">Este é o seu formulário de <b>pré-consulta</b>. Com ele, o Dr. Adriano já chega à sua consulta conhecendo sua história, e o atendimento fica mais completo.</p>
+    <div class="card">
+      <ul class="pts" style="margin:0">
+        <li>Leva cerca de <b>3 minutos</b>.</li>
+        <li>Suas respostas ficam salvas neste aparelho: se precisar parar, é só abrir o link de novo.</li>
+        <li>Se tiver exames recentes (PDF ou foto), você poderá anexar no final.</li>
+        <li>Suas informações são confidenciais e vão apenas para o seu médico.</li>
+      </ul>
+    </div>
+    <label class="consent" id="consent-lbl"><input type="checkbox" id="consent"><span><b>Autorização de uso dos dados (LGPD).</b> Autorizo o <span class="medico">Dr. Adriano Fabri Domingues</span> e sua equipe a armazenar e usar as informações de saúde deste formulário exclusivamente para o meu atendimento médico, conforme a Lei Geral de Proteção de Dados (Lei 13.709/2018). Posso pedir a correção ou a exclusão dos meus dados a qualquer momento pelo WhatsApp do consultório.</span></label>
+    <p class="err-msg" id="consent-err" style="margin-top:10px" hidden>Para começar, marque a autorização acima.</p>
+    <div style="height:18px"></div>
+    <button class="btn" id="comecar" type="button" style="width:100%">Começar</button>
+  </div>
+
+  <!-- formulário -->
+  <div id="v-form" hidden>
+    <div class="prog"><div class="t"><span id="p-txt"></span><span id="p-pct"></span></div><div class="bar"><i id="p-bar"></i></div></div>
+    <h2 id="e-tit"></h2>
+    <p class="lead" id="e-sub"></p>
+    <p class="err-msg" id="e-err" hidden></p>
+    <div id="e-campos"></div>
+    <p class="saved" id="salvo"></p>
+  </div>
+
+  <!-- final -->
+  <div id="v-fim" hidden></div>
+
+  <p class="foot">Pré-consulta · <span class="medico">Dr. Adriano Fabri Domingues</span></p>
+</div>
+
+<div class="nav" id="nav" hidden><div class="in">
+  <button class="btn ghost" id="voltar" type="button">Voltar</button>
+  <button class="btn" id="avancar" type="button">Continuar</button>
+</div></div>
+
+<script>
+const API="https://script.google.com/macros/s/AKfycbzNa5ji3oWKpmNrbjO3dmHyDQh7BiwObWj7g97QRcUSHk0i4z-9VZOMjTo0NZNyy34s/exec";
+let ESTADO="", TOKEN="", NOME="", PNOME="", WHATS="";
+const $=id=>document.getElementById(id);
+const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+
+/* ============ ROTEIRO DA PRÉ-CONSULTA ============
+ * Para acrescentar/retirar perguntas, edite esta lista.
+ * tipos: texto, area, num, data, email, radio, multi, efca, anexos
+ * pr = rótulo usado no texto do prontuário · cond = só aparece se a função retornar true
+ */
+const F=s=>s.sexo==="Feminino";
+const ETAPAS=[
+ {tit:"Sobre você",sub:"Seus dados básicos.",campos:[
+  {id:"nome",t:"texto",q:"Nome completo",obr:1,pr:"NOME"},
+  {id:"nascimento",t:"data",q:"Data de nascimento",obr:1,pr:"DN"},
+  {id:"sexo",t:"radio",q:"Sexo",op:["Feminino","Masculino"],c2:1,obr:1,pr:"SEXO"},
+  {id:"profissao",t:"texto",q:"Profissão",pr:"PROFISSÃO"},
+  {id:"cidade",t:"texto",q:"Cidade onde mora",pr:"CIDADE"},
+  {id:"email",t:"email",q:"E-mail",pr:"E-MAIL"}
+ ]},
+ {tit:"Seu objetivo",sub:"O que você busca com o tratamento.",campos:[
+  {id:"objetivos",t:"multi",q:"Quais são seus objetivos?",h:"Pode marcar mais de um.",obr:1,pr:"METAS",
+   op:["Emagrecer","Ganhar massa muscular","Melhorar a composição corporal","Mais energia e disposição","Saúde e longevidade","Performance esportiva","Outro"]},
+  {id:"objetivo_txt",t:"area",q:"Conte com suas palavras o que espera do tratamento",pr:"EXPECTATIVA"},
+  {id:"peso",t:"num",q:"Peso atual",un:"kg",obr:1,min:25,max:350,pr:"PESO REFERIDO"},
+  {id:"altura",t:"num",q:"Altura",un:"cm",obr:1,min:100,max:230,pr:"ALTURA"},
+  {id:"peso_desejado",t:"num",q:"Peso que gostaria de alcançar",un:"kg",min:25,max:350,pr:"PESO DESEJADO"}
+ ]},
+ {tit:"Histórico de peso",sub:"Como seu peso mudou ao longo do tempo.",campos:[
+  {id:"peso_max",t:"num",q:"Maior peso que já teve (fora da gestação)",un:"kg",min:25,max:400,pr:"MAIOR PESO"},
+  {id:"inicio_ganho",t:"texto",q:"Quando começou o ganho de peso?",ph:"Ex.: após a gestação, na adolescência…",pr:"INÍCIO DO GANHO"},
+  {id:"tratamentos",t:"multi",q:"O que já tentou para emagrecer?",obr:1,pr:"TRATAMENTOS PRÉVIOS",
+   op:["Nunca fiz tratamento","Dietas por conta própria","Acompanhamento com nutricionista","Remédios para emagrecer","Canetas (Ozempic, Mounjaro, Wegovy…)","Outro"]},
+  {id:"tratamentos_txt",t:"area",q:"Quais remédios ou canetas usou, e como foi?",h:"Nome, dose, tempo de uso e resultado, se lembrar.",pr:"DETALHES",
+   cond:s=>(s.tratamentos||[]).some(x=>/Remédios|Canetas|Outro/.test(x))},
+  {id:"bariatrica",t:"radio",q:"Já fez cirurgia bariátrica?",op:["Não","Sim"],c2:1,obr:1,pr:"BARIÁTRICA"},
+  {id:"bariatrica_txt",t:"texto",q:"Qual cirurgia e em que ano?",ph:"Ex.: bypass, 2019",pr:"TIPO/ANO",cond:s=>s.bariatrica==="Sim"}
+ ]},
+ {tit:"Sua saúde",sub:"Doenças, remédios e histórico familiar.",campos:[
+  {id:"doencas",t:"multi",q:"Você tem ou já teve alguma destas condições?",obr:1,pr:"COMORBIDADES",
+   op:["Nenhuma","Pressão alta","Diabetes","Pré-diabetes / resistência à insulina","Colesterol ou triglicerídeos altos","Gordura no fígado","Hipotireoidismo","Síndrome dos ovários policísticos","Apneia do sono","Refluxo / gastrite","Ansiedade","Depressão","Problema nos rins","Outra"]},
+  {id:"doencas_txt",t:"texto",q:"Quais outras condições?",pr:"OUTRAS",cond:s=>(s.doencas||[]).includes("Outra")},
+  {id:"medicacoes",t:"area",q:"Remédios que usa atualmente",h:"Nome e dose. Se não usa nenhum, escreva “nenhum”.",obr:1,pr:"MEDICAÇÕES EM USO"},
+  {id:"suplementos",t:"area",q:"Suplementos, vitaminas ou fitoterápicos que usa",pr:"SUPLEMENTOS"},
+  {id:"alergias",t:"texto",q:"Alergias a remédios ou alimentos",ph:"Se não tem, deixe em branco",pr:"ALERGIAS"},
+  {id:"cirurgias",t:"texto",q:"Cirurgias que já fez",pr:"CIRURGIAS PRÉVIAS"},
+  {id:"familia",t:"multi",q:"Algum familiar próximo (pais ou irmãos) tem:",pr:"ANTECEDENTES FAMILIARES",
+   op:["Obesidade","Diabetes","Pressão alta","Infarto ou AVC","Câncer","Doença da tireoide","Nenhum / não sei"]}
+ ]},
+ {tit:"Segurança do tratamento",sub:"Algumas condições mudam a escolha dos medicamentos. Responda com atenção.",campos:[
+  {id:"seguranca",t:"multi",q:"Você tem ou já teve alguma destas situações?",h:"Pode marcar mais de uma.",obr:1,pr:"SEGURANÇA (GLP-1/TIRZEPATIDA)",
+   op:["Nenhuma destas","Pancreatite (inflamação no pâncreas)","Câncer medular de tireoide – em mim ou na família","Neoplasia endócrina múltipla tipo 2 (NEM 2) – em mim ou na família","Pedra na vesícula ou cirurgia de retirada da vesícula","Gastroparesia (estômago que esvazia devagar)","Retinopatia diabética (problema na retina causado pelo diabetes)","Doença renal crônica ou hemodiálise","Transtorno alimentar (anorexia, bulimia ou compulsão alimentar)"]},
+  {id:"seguranca_txt",t:"texto",q:"Conte um pouco mais",ph:"Ex.: pancreatite em 2020; câncer de tireoide no pai",pr:"DETALHES",cond:s=>(s.seguranca||[]).some(x=>!/^Nenhuma/.test(x))}
+ ]},
+ {tit:"Rotina e hábitos",sub:"Atividade física, sono e outros hábitos.",campos:[
+  {id:"atividade",t:"radio",q:"Pratica atividade física?",obr:1,pr:"ATIVIDADE FÍSICA",op:["Não pratico","1 a 2 vezes por semana","3 a 4 vezes por semana","5 vezes ou mais"]},
+  {id:"atividade_tipo",t:"texto",q:"Qual atividade?",ph:"Ex.: musculação, caminhada",pr:"MODALIDADE",cond:s=>s.atividade&&s.atividade!=="Não pratico"},
+  {id:"sono_horas",t:"radio",q:"Quantas horas dorme por noite?",obr:1,pr:"SONO",op:["Menos de 5 horas","5 a 6 horas","7 a 8 horas","Mais de 8 horas"],c2:1},
+  {id:"sono_qual",t:"radio",q:"Como é a qualidade do seu sono?",obr:1,pr:"QUALIDADE DO SONO",op:["Boa","Regular","Ruim"]},
+  {id:"ronco",t:"radio",q:"Ronca ou já disseram que você para de respirar dormindo?",pr:"RONCO/APNEIA",op:["Não","Sim","Não sei"]},
+  {id:"alcool",t:"radio",q:"Bebida alcoólica",obr:1,pr:"ETILISMO",op:["Não bebo","Até 1 vez por semana","2 a 3 vezes por semana","Quase todos os dias"]},
+  {id:"fumo",t:"radio",q:"Cigarro / vape",obr:1,pr:"TABAGISMO",op:["Não","Sim","Ex-fumante"]},
+  {id:"agua",t:"radio",q:"Quanta água bebe por dia?",pr:"INGESTA HÍDRICA",op:["Menos de 1 litro","1 a 2 litros","Mais de 2 litros"]},
+  {id:"intestino",t:"radio",q:"Como funciona seu intestino?",pr:"HÁBITO INTESTINAL",op:["Todos os dias","A cada 2 ou 3 dias","Menos que isso","Diarreia frequente"]}
+ ]},
+ {tit:"Saúde da mulher",sub:"",cond:F,campos:[
+  {id:"gestacao",t:"radio",q:"Está grávida, amamentando ou planejando engravidar nos próximos 6 meses?",obr:1,pr:"GESTAÇÃO/LACTAÇÃO",op:["Não","Estou grávida","Estou amamentando","Planejo engravidar"],c2:1},
+  {id:"ciclo",t:"radio",q:"Como está seu ciclo menstrual?",pr:"CICLO",op:["Regular","Irregular","Não menstruo (menopausa)","Não menstruo (anticoncepcional contínuo / DIU)"]},
+  {id:"hormonio",t:"texto",q:"Usa anticoncepcional ou reposição hormonal? Qual?",pr:"CONTRACEPÇÃO/TRH"},
+  {id:"gestacoes",t:"texto",q:"Número de gestações",ph:"Ex.: 2",pr:"GESTAÇÕES"}
+ ]},
+ {tit:"Alimentação",sub:"Sua rotina alimentar.",campos:[
+  {id:"refeicoes",t:"radio",q:"Quantas refeições faz por dia?",obr:1,pr:"REFEIÇÕES/DIA",op:["1 a 2","3","4 a 5","6 ou mais"],c2:1},
+  {id:"come_fora",t:"radio",q:"Come fora de casa ou pede delivery?",pr:"REFEIÇÕES FORA",op:["Raramente","Algumas vezes por semana","Quase todos os dias"]},
+  {id:"restricoes",t:"texto",q:"Alimentos que não come ou não tolera",pr:"RESTRIÇÕES/AVERSÕES"},
+  {id:"dia_alimentar",t:"area",q:"Descreva um dia comum de alimentação",h:"O que costuma comer no café da manhã, almoço, lanches e jantar.",pr:"DIA ALIMENTAR"}
+ ]},
+ {tit:"Seu jeito de comer",sub:"Marque com que frequência cada situação acontece com você. Não existe resposta certa ou errada.",campos:[{id:"efca",t:"efca"}]},
+ {tit:"Exames e finalização",sub:"Quase lá!",campos:[
+  {id:"exames",t:"radio",q:"Fez exames de sangue nos últimos 6 meses?",pr:"EXAMES RECENTES",op:["Sim","Não"],c2:1},
+  {id:"anexos",t:"anexos",q:"Anexe seus exames recentes",h:"PDF ou fotos legíveis. Opcional."},
+  {id:"observacoes",t:"area",q:"Há algo mais que gostaria de contar ao médico?",pr:"OBSERVAÇÕES DO PACIENTE"}
+ ]}
+];
+
+/* EFCA – versão brasileira validada (Arch Endocrinol Metab 2025;69(3):e240404, Tabela 2) */
+const EFCA_ITENS=["Eu como até ficar muito cheio","Acalmo as minhas emoções com comida","Peço mais comida quando termino meu prato",
+ "Tenho o hábito de petiscar (petiscar = fazer pequenas refeições entre as refeições principais – café da manhã, almoço, café da tarde e jantar – sem medir a quantidade do que se come)",
+ "Quando começo a comer algo que gosto muito, tenho dificuldade em parar","Costumo comer mais de um prato nas refeições principais",
+ "Lanches entre as refeições devido à ansiedade, tédio, solidão, medo, raiva, tristeza e/ou cansaço",
+ "Sinto-me tentado a comer quando vejo/cheiro comida que gosto e/ou quando passo por um quiosque, uma padaria, uma pizzaria ou um estabelecimento de fast food",
+ "Tomo café da manhã todos os dias","Como nos momentos em que estou: entediado, ansioso, nervoso, triste, cansado, irritado e solitário",
+ "Pulo algumas – ou pelo menos uma – das refeições principais (café da manhã, almoço, café da tarde ou jantar)",
+ "Quando me deparo com uma comida que gosto muito, mesmo sem sentir fome, acabo comendo","Como muita comida em pouco tempo",
+ "Quando como algo que gosto, finalizo toda a porção","Quando como algo que gosto muito, como muito rápido","Passo mais de 5 horas por dia sem comer"];
+const LIKERT=["Nunca","Raras vezes","Às vezes","Quase sempre","Sempre"];
+
+/* ============ estado ============ */
+let KEY="preconsulta_";
+let S={efca:Array(16).fill(null)}, etapa=0, anexos=[], enviando=false;
+const etapasVis=()=>ETAPAS.filter(e=>!e.cond||e.cond(S));
+function salvarLocal(){try{localStorage.setItem(KEY,JSON.stringify({S,etapa}));$("salvo").textContent="Respostas salvas neste aparelho ✓"}catch(e){}}
+function lerLocal(){try{const d=JSON.parse(localStorage.getItem(KEY)||"null");if(d&&d.S){S=Object.assign(S,d.S);if(!Array.isArray(S.efca)||S.efca.length!==16)S.efca=Array(16).fill(null);etapa=d.etapa||0;return true}}catch(e){}return false}
+function limparLocal(){try{localStorage.removeItem(KEY)}catch(e){}}
+const chamar=(fn,...args)=>fetch(API,{method:"POST",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify({fn,args}),redirect:"follow"})
+  .then(r=>{if(!r.ok)throw new Error("Falha de conexão ("+r.status+").");return r.json()})
+  .then(j=>{if(!j.ok)throw new Error(j.erro||"Erro no servidor.");return j.data})
+  .catch(e=>{throw new Error(/fetch|network|load failed|conexão/i.test(String(e&&e.message))?"Sem conexão com o servidor. Verifique sua internet e tente de novo.":(e&&e.message)||String(e))});
+const msgErro=e=>String(e&&e.message||e).replace(/^(Error|Exception):\s{0,}/,"");
+
+/* ============ telas ============ */
+let WNUMS=[];const calcWnums=()=>String(WHATS).split(/[\/;,|]+/).map(n=>n.replace(/\D/g,"")).filter(n=>n.length>=10).map(n=>n.length<=11?"55"+n:n);
+function botoesWhats(){if(!WNUMS.length)return"";return `<div style="margin-top:14px;display:flex;flex-direction:column;gap:8px;align-items:center">`+WNUMS.map((n,i)=>`<a class="btn" style="text-decoration:none;display:inline-flex;flex:none;justify-content:center;min-width:240px" href="https:\/\/wa.me/${n}">Falar com o consultório${WNUMS.length>1?" · secretária "+(i+1):""}</a>`).join("")+`</div>`}
+function telaMsg(ico,tit,txt){
+  $("v-msg").innerHTML=`<div class="big-ico ${ico==="ok"?"":"warn"}">${ico==="ok"?"✓":"!"}</div><h2>${tit}</h2><p class="lead" style="margin:6px 0 0">${txt}</p>`+
+   botoesWhats();
+  $("v-msg").hidden=false;
+}
+function boot(d){
+  ESTADO=d.estado; TOKEN=d.token||""; NOME=d.nomeCompleto||""; PNOME=d.primeiroNome||""; WHATS=(d.cfg&&d.cfg.whats)||"";
+  KEY="preconsulta_"+TOKEN; WNUMS=calcWnums();
+  if(d.cfg&&d.cfg.medico){document.querySelectorAll(".medico").forEach(el=>el.textContent=d.cfg.medico);document.title="Pré-consulta · "+d.cfg.medico}
+  $("v-load").hidden=true;
+  if(ESTADO==="invalido") telaMsg("x","Link inválido","Este link de pré-consulta não é válido. Fale com o consultório para receber o link correto.");
+  else if(ESTADO==="expirado") telaMsg("x","Link expirado","O prazo para preencher este formulário terminou. Fale com o consultório para receber um novo link.");
+  else if(ESTADO==="respondido") telaMsg("ok","Pré-consulta já enviada","Recebemos suas respostas. Obrigado! Nos vemos na consulta.");
+  else{
+    const tinha=lerLocal();
+    if(!S.nome) S.nome=NOME;
+    $("ola").textContent=`Olá${PNOME?", "+PNOME:""}!`;
+    if(tinha&&etapa>0){$("comecar").textContent="Continuar de onde parei"}
+    if(S.consentimento) $("consent").checked=true;
+    $("v-ini").hidden=false;
+    chamar("listarAnexos",TOKEN).then(l=>{anexos=l.map(a=>Object.assign({st:"ok"},a))}).catch(()=>{});
+  }
+}
+function iniciarPagina(){
+  const t=(new URLSearchParams(location.search).get("t")||"").trim();
+  $("v-load").hidden=false; $("v-load").innerHTML=`<p class="lead" style="margin:6px 0">Carregando sua pré-consulta…</p>`;
+  if(!/^[A-Za-z0-9]{16,40}$/.test(t)){boot({estado:"invalido",cfg:{}});return}
+  chamar("iniciar",t).then(boot).catch(e=>{
+    $("v-load").innerHTML=`<div class="big-ico warn">!</div><h2>Não foi possível carregar</h2><p class="lead" style="margin:6px 0 14px">${esc(msgErro(e))}</p><button class="btn" type="button" id="tentar" style="width:100%">Tentar de novo</button>`;
+    $("tentar").onclick=iniciarPagina;
+  });
+}
+$("consent").onchange=()=>{$("consent-lbl").classList.remove("err");$("consent-err").hidden=true};
+$("comecar").onclick=()=>{
+  if(!$("consent").checked){$("consent-lbl").classList.add("err");$("consent-err").hidden=false;return}
+  if(!S.consentimento){S.consentimento=new Date().toISOString();salvarLocal()}
+  $("v-ini").hidden=true;$("v-form").hidden=false;$("nav").hidden=false;etapa=Math.min(etapa,etapasVis().length-1);render()};
+
+/* ============ render ============ */
+function render(){
+  const vis=etapasVis(), e=vis[etapa], n=vis.length;
+  $("p-txt").textContent=`Etapa ${etapa+1} de ${n}`;
+  $("p-pct").textContent=Math.round(etapa/n*100)+"%";
+  $("p-bar").style.width=(etapa/n*100)+"%";
+  $("e-tit").textContent=e.tit; $("e-sub").textContent=e.sub||""; $("e-sub").hidden=!e.sub;
+  $("e-err").hidden=true;
+  $("e-campos").innerHTML=e.campos.filter(c=>!c.cond||c.cond(S)).map(campoHtml).join("");
+  $("voltar").style.visibility=etapa===0?"hidden":"visible";
+  $("avancar").textContent=etapa===n-1?"Enviar pré-consulta":"Continuar";
+  if(e.campos.some(c=>c.t==="anexos")) renderAnexos();
+  window.scrollTo({top:0});
+}
+function campoHtml(c){
+  const v=S[c.id], q=`<div class="q">${esc(c.q)}${c.obr?"":` <span class="opt">(opcional)</span>`}</div>${c.h?`<div class="h">${esc(c.h)}</div>`:""}`;
+  if(c.t==="efca") return EFCA_ITENS.map((txt,i)=>`<div class="ef" id="ef-${i}"><div class="q"><b>${i+1}.</b>${esc(txt)}</div><div class="lik">${LIKERT.map((l,k)=>`<button type="button" data-ef="${i}" data-v="${k+1}" aria-pressed="${S.efca[i]===k+1}">${l}</button>`).join("")}</div></div>`).join("");
+  if(c.t==="radio"||c.t==="multi"){
+    const multi=c.t==="multi", sel=multi?(v||[]):v;
+    let ops=c.op; if(c.id==="doencas"&&!F(S)) ops=ops.filter(o=>!/ovários/.test(o));
+    return `<div class="f" data-c="${c.id}">${q}<div class="ops${c.c2?" c2":""}">${ops.map(o=>`<button type="button" class="op${multi?" m":""}" data-op="${esc(c.id)}" data-val="${esc(o)}" aria-pressed="${multi?sel.includes(o):sel===o}">${esc(o)}</button>`).join("")}</div></div>`;
+  }
+  if(c.t==="anexos") return `<div class="f">${q}<label class="drop" for="arq"><b>Toque para escolher arquivos</b>PDF ou fotos · até 10 arquivos de 10 MB</label><input id="arq" type="file" accept="application/pdf,image/${"*"}" multiple hidden><ul class="files" id="files"></ul></div>`;
+  const tipo={texto:"text",num:"text",data:"date",email:"email"}[c.t];
+  const inp=c.t==="area"?`<textarea data-in="${c.id}" rows="3" maxlength="2500" placeholder="${esc(c.ph||"")}">${esc(v||"")}</textarea>`
+    :`<input data-in="${c.id}" type="${tipo}" ${c.t==="num"?'inputmode="decimal"':""} maxlength="200" placeholder="${esc(c.ph||"")}" value="${esc(v||"")}"${c.t==="data"?` max="${new Date().toISOString().slice(0,10)}"`:""}>`;
+  return `<div class="f" data-c="${c.id}">${q}${c.un?`<div class="unit">${inp}<span>${c.un}</span></div>`:inp}</div>`;
+}
+
+/* ============ eventos ============ */
+document.addEventListener("click",e=>{
+  const b=e.target.closest("button"); if(!b) return;
+  if(b.dataset.ef!=null){S.efca[+b.dataset.ef]=+b.dataset.v;b.parentNode.querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed",x===b));b.closest(".ef").classList.remove("err");salvarLocal();return}
+  if(b.dataset.op){
+    const id=b.dataset.op, val=b.dataset.val, c=etapasVis()[etapa].campos.find(x=>x.id===id);
+    if(c.t==="multi"){
+      let a=(S[id]||[]).slice(); const excl=/^(Nenhuma|Nenhum|Nunca fiz)/;
+      if(a.includes(val)) a=a.filter(x=>x!==val); else{ if(excl.test(val)) a=[val]; else a=a.filter(x=>!excl.test(x)).concat(val); }
+      S[id]=a;
+    } else S[id]=val;
+    salvarLocal(); rerenderCampos(); return;
+  }
+  if(b.dataset.rm){removerArquivo(b.dataset.rm);return}
+});
+document.addEventListener("input",e=>{const id=e.target.dataset.in;if(id){S[id]=e.target.value;salvarLocalDeb()}});
+document.addEventListener("change",e=>{if(e.target.id==="arq"){enviarArquivos([...e.target.files]);e.target.value=""}});
+let tSalvar; function salvarLocalDeb(){clearTimeout(tSalvar);tSalvar=setTimeout(salvarLocal,400)}
+function rerenderCampos(){ // mantém rolagem, atualiza condicionais
+  const y=window.scrollY, e=etapasVis()[etapa];
+  $("e-campos").innerHTML=e.campos.filter(c=>!c.cond||c.cond(S)).map(campoHtml).join("");
+  if(e.campos.some(c=>c.t==="anexos")) renderAnexos();
+  window.scrollTo({top:y});
+}
+$("voltar").onclick=()=>{if(etapa>0){etapa--;salvarLocal();render()}};
+$("avancar").onclick=()=>{
+  const err=validar(); if(err){$("e-err").textContent=err;$("e-err").hidden=false;const alvo=document.querySelector(".ef.err")||$("e-err");alvo.scrollIntoView({behavior:"smooth",block:"center"});return}
+  const n=etapasVis().length;
+  if(etapa<n-1){etapa++;salvarLocal();render()} else enviar();
+};
+const numero=v=>{const x=Number(String(v||"").replace(",","."));return String(v||"").trim()&&isFinite(x)?x:null};
+function validar(){
+  const e=etapasVis()[etapa];
+  for(const c of e.campos){
+    if(c.cond&&!c.cond(S)) continue;
+    if(c.t==="efca"){
+      const falta=S.efca.map((v,i)=>v?null:i).filter(i=>i!=null);
+      document.querySelectorAll(".ef").forEach((el,i)=>el.classList.toggle("err",falta.includes(i)));
+      if(falta.length) return `Faltam ${falta.length} pergunta${falta.length>1?"s":""} (destacadas em vermelho).`;
+      continue;
+    }
+    const v=S[c.id], vazio=v==null||(Array.isArray(v)?!v.length:!String(v).trim());
+    if(c.obr&&vazio) return `Responda: “${c.q}”.`;
+    if(!vazio&&c.t==="num"){const x=numero(v);if(x==null||(c.min&&x<c.min)||(c.max&&x>c.max))return `Confira o valor de “${c.q}” (em ${c.un}).`}
+    if(!vazio&&c.id==="nome"&&String(v).trim().split(/\s+/).length<2) return "Informe nome e sobrenome.";
+    if(!vazio&&c.t==="data"){const d=new Date(v);if(isNaN(d)||d>new Date()||d.getFullYear()<1900)return `Confira a data em “${c.q}”.`}
+  }
+  if(anexos.some(a=>a.st==="up")) return "Aguarde o envio dos arquivos terminar.";
+  return "";
+}
+
+/* ============ anexos ============ */
+function renderAnexos(){
+  const ul=$("files"); if(!ul) return;
+  ul.innerHTML=anexos.map((a,i)=>`<li class="${a.st==="ok"?"ok":a.st==="er"?"er":""}"><span class="nm">${esc(a.nome)}</span><span class="st">${a.st==="up"?"enviando…":a.st==="er"?esc(a.erro||"erro"):"enviado ✓"}</span>${a.st!=="up"?`<button type="button" data-rm="${a.id||"i"+i}" aria-label="Remover">✕</button>`:""}</li>`).join("");
+}
+function lerBase64(blob){return new Promise((ok,er)=>{const r=new FileReader();r.onload=()=>ok(String(r.result).split(",")[1]);r.onerror=er;r.readAsDataURL(blob)})}
+async function comprimir(file){
+  try{
+    const url=URL.createObjectURL(file), img=new Image();
+    await new Promise((ok,er)=>{img.onload=ok;img.onerror=er;img.src=url});
+    const m=2000, k=Math.min(1,m/Math.max(img.width,img.height)), cv=document.createElement("canvas");
+    cv.width=Math.round(img.width*k); cv.height=Math.round(img.height*k);
+    cv.getContext("2d").drawImage(img,0,0,cv.width,cv.height); URL.revokeObjectURL(url);
+    const blob=await new Promise(ok=>cv.toBlob(ok,"image/jpeg",0.85));
+    return {blob,tipo:"image/jpeg",nome:file.name.replace(/\.\w+$/,"")+".jpg"};
+  }catch(e){return {blob:file,tipo:file.type||(/\.hei[cf]$/i.test(file.name)?"image/heic":"image/jpeg"),nome:file.name}}
+}
+async function enviarArquivos(files){
+  for(const f of files){
+    if(anexos.filter(a=>a.st!=="er").length>=10){alert("Limite de 10 arquivos.");break}
+    const item={nome:f.name,st:"up"}; anexos.push(item); renderAnexos();
+    try{
+      let p={blob:f,tipo:f.type||"application/pdf",nome:f.name};
+      if(String(f.type).indexOf("image/")===0||/\.(heic|heif)$/i.test(f.name)) p=await comprimir(f);
+      if(p.blob.size>10*1024*1024) throw new Error("maior que 10 MB");
+      const lista=await chamar("enviarAnexo",TOKEN,{nome:p.nome,tipo:p.tipo,base64:await lerBase64(p.blob)});
+      anexos=anexos.filter(a=>(a.st==="up"||a.st==="er")&&a!==item).concat(lista.map(a=>Object.assign({st:"ok"},a)));
+    }catch(e){item.st="er";item.erro=msgErro(e)}
+    renderAnexos();
+  }
+}
+async function removerArquivo(id){
+  if(id.startsWith("i")){anexos.splice(+id.slice(1),1);renderAnexos();return}
+  try{const l=await chamar("removerAnexo",TOKEN,id);anexos=anexos.filter(a=>a.st==="up"||a.st==="er").concat(l.map(a=>Object.assign({st:"ok"},a)))}catch(e){alert(msgErro(e))}
+  renderAnexos();
+}
+
+/* ============ envio ============ */
+function fmtResp(c,v){
+  if(Array.isArray(v)) return v.join(", ");
+  if(c.t==="num"){const x=numero(v);return x==null?"":String(x).replace(".",",")+" "+c.un}
+  if(c.t==="data"){const [y,m,d]=String(v).split("-");return d?`${d}/${m}/${y}`:v}
+  return String(v||"").trim();
+}
+function montar(){
+  const secoes=[], campos={};
+  etapasVis().forEach(e=>{
+    const itens=[];
+    e.campos.forEach(c=>{
+      if(c.t==="efca"||c.t==="anexos"||(c.cond&&!c.cond(S))) return;
+      const r=fmtResp(c,S[c.id]); if(!r) return;
+      itens.push({id:c.id,p:c.q,r,pr:c.pr||c.q.toUpperCase()});
+      campos[c.id]=c.t==="num"?String(numero(S[c.id])):Array.isArray(S[c.id])?S[c.id].join(", "):String(S[c.id]);
+    });
+    if(itens.length) secoes.push({titulo:e.tit,itens});
+  });
+  return {secoes,campos,efca:S.efca,consentimento:{aceito:!!S.consentimento,marcadoEm:S.consentimento||""}};
+}
+async function enviar(){
+  if(enviando) return; enviando=true;
+  $("avancar").disabled=true; $("voltar").disabled=true; $("avancar").textContent="Enviando…";
+  try{
+    const r=await chamar("enviarPreConsulta",TOKEN,montar());
+    limparLocal(); telaFim(r.efca);
+  }catch(e){
+    $("e-err").textContent="Não foi possível enviar: "+msgErro(e)+" Tente novamente em instantes."; $("e-err").hidden=false;
+    $("avancar").disabled=false; $("voltar").disabled=false; $("avancar").textContent="Enviar pré-consulta"; enviando=false;
+  }
+}
+function telaFim(ef){
+  $("v-form").hidden=true; $("nav").hidden=true;
+  const itens=(ef&&ef.itens)||[];
+  $("v-fim").innerHTML=`<div class="card center"><div class="big-ico">✓</div><h2>Pré-consulta enviada!</h2>
+    <p class="lead" style="margin:6px 0 0">Obrigado${PNOME?", "+esc(PNOME):""}. Suas respostas já estão com o Dr. Adriano.</p></div>
+    <div style="height:16px"></div>
+    <div class="card"><h2 style="font-size:1.2rem">Um retrato do seu jeito de comer</h2>
+    ${itens.length?`<p class="lead" style="margin:4px 0 0">Pelas suas respostas, estes pontos aparecem na sua rotina:</p><div class="res">${itens.map(i=>`<div class="it"><span>${esc(i.intensidade)}</span><b>${esc(i.titulo)}</b><p>${esc(i.texto)}</p></div>`).join("")}</div>`
+      :`<p class="lead" style="margin:4px 0 0">Suas respostas não mostraram nenhum padrão alimentar que chame atenção. Ótimo ponto de partida!</p>`}
+    <div class="note">Isto não é um diagnóstico. É apenas um retrato dos seus hábitos, que o Dr. Adriano vai conversar com você na consulta para montar um plano do seu jeito.</div></div>`;
+  $("v-fim").hidden=false; window.scrollTo({top:0});
+}
+iniciarPagina();
+</script>
+</body>
+</html>
