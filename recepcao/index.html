@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta name="robots" content="noindex,nofollow">
+<meta name="referrer" content="no-referrer">
+<base target="_blank">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pré-Consulta · Recepção</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Marcellus&family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+:root{--bg:#f6f3ee;--surface:#fff;--surface2:#fbf8f3;--ink:#221d16;--muted:#6f675b;--line:#e6dfd3;--accent:#8a6624;--accent-soft:#f4ecdc;--gold:#b8913f;
+--ok:#1f7a4d;--ok-soft:#e3f3ea;--warn:#9a6200;--warn-soft:#fbf0d9;--late:#b3261e;--late-soft:#fbe5e3;--info:#3f5f8a;--info-soft:#e6eef8;
+--f-display:"Marcellus",Georgia,serif;--f-body:"Instrument Sans",system-ui,sans-serif;--f-mono:"JetBrains Mono",ui-monospace,monospace}
+*{box-sizing:border-box}[hidden]{display:none!important}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.5}
+.wrap{max-width:1100px;margin:0 auto;padding:20px 16px 48px}
+header{display:flex;flex-wrap:wrap;gap:16px 32px;align-items:center;justify-content:space-between;margin-bottom:22px;padding-bottom:18px;border-bottom:1px solid var(--line)}
+.brand{display:flex;gap:14px;align-items:center}
+.brand img{height:56px;width:auto}
+.mono{width:52px;height:52px;border-radius:50%;border:1.5px solid var(--gold);display:grid;place-items:center;font-family:var(--f-display);color:var(--accent);font-size:1.25rem;flex:none}
+h1{font-family:var(--f-display);font-weight:400;font-size:1.6rem;margin:0;line-height:1.15}
+h2{font-family:var(--f-display);font-weight:400;font-size:1.2rem;margin:0 0 12px}
+.sub{color:var(--muted);margin:2px 0 0;font-size:.88rem}
+.stats{display:flex;gap:26px;flex-wrap:wrap}
+.stat .n{font-weight:600;font-size:1.5rem;font-variant-numeric:tabular-nums;line-height:1.1}
+.stat .l{font-size:.68rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted)}
+.grid{display:grid;grid-template-columns:minmax(0,360px) minmax(0,1fr);gap:20px;align-items:start}
+@media (max-width:860px){.grid{grid-template-columns:minmax(0,1fr)}}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px}
+form{display:grid;gap:12px}
+label{display:grid;gap:4px;font-size:.74rem;font-weight:600;text-transform:uppercase;letter-spacing:.07em;color:var(--muted)}
+input,select{font:400 .95rem var(--f-body);color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:9px 10px;width:100%;text-transform:none;letter-spacing:0;min-width:0}
+input:focus,select:focus,button:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+.btn{border:0;background:var(--accent);color:#fff;font:600 .92rem var(--f-body);padding:11px 14px;border-radius:9px;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:6px}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+.btn.ghost{background:transparent;color:var(--accent);border:1px solid var(--line)}
+.btn.small{padding:6px 11px;font-size:.8rem}
+.btn.wa{background:#1f7a4d}
+.btn.danger{background:var(--late)}
+.msg{font-size:.85rem;min-height:1.2em;margin:0}.msg.ok{color:var(--ok)}.msg.err{color:var(--late)}
+.hint{font-size:.8rem;color:var(--muted);margin:0}
+.novo{margin-top:16px;border:1px solid var(--gold);background:linear-gradient(135deg,var(--accent-soft),var(--surface));border-radius:10px;padding:14px;display:grid;gap:10px}
+.novo .t{font-family:var(--f-display);font-size:1.05rem;color:var(--accent)}
+.linkbox{font:400 .78rem var(--f-mono);background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px 10px;overflow-wrap:anywhere;user-select:all}
+.actions{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.banner{background:var(--warn-soft);color:var(--warn);border-radius:8px;padding:10px 12px;font-size:.88rem;margin-bottom:16px}
+.toolbar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:12px}
+.toolbar input{flex:1 1 220px;width:auto}.toolbar select{flex:0 1 190px;width:auto}
+.list{display:grid;gap:10px}
+.pt{border:1px solid var(--line);border-radius:12px;background:var(--surface);overflow:hidden}
+.pt-head{display:flex;gap:12px;align-items:center;justify-content:space-between;padding:13px 15px;cursor:pointer;width:100%;border:0;background:transparent;color:inherit;text-align:left;font:inherit;flex-wrap:wrap}
+.pt-name{font-weight:600;overflow-wrap:anywhere}
+.pt-meta{font-size:.82rem;color:var(--muted);font-variant-numeric:tabular-nums}
+.chip{font:500 .74rem var(--f-mono);padding:3px 8px;border-radius:99px;white-space:nowrap}
+.chip.ok{background:var(--ok-soft);color:var(--ok)}.chip.warn{background:var(--warn-soft);color:var(--warn)}.chip.late{background:var(--late-soft);color:var(--late)}.chip.mut{background:#eeeae3;color:var(--muted)}
+.pt-body{border-top:1px solid var(--line);padding:14px 15px;display:grid;gap:12px;background:var(--surface2)}
+.empty{border:1px dashed var(--line);border-radius:12px;padding:28px 20px;text-align:center;color:var(--muted);background:var(--surface)}
+.empty b{display:block;color:var(--ink);font-family:var(--f-display);font-weight:400;font-size:1.1rem;margin-bottom:4px}
+.confirm{display:inline-flex;gap:8px;align-items:center;flex-wrap:wrap;font-size:.85rem}
+.login{max-width:380px;margin:12vh auto 0;text-align:center}
+.login .panel{text-align:left}
+.lemb{border:1px solid #e9b8b3;border-left:4px solid var(--late);background:var(--late-soft);border-radius:10px;padding:10px 12px;margin:8px 0;font-size:.88rem}
+.lock{font-size:.8rem;color:var(--muted);margin-top:14px;text-align:center}
+.hero-logo{display:block;width:min(62vw,230px);height:auto;margin:0 auto 14px}
+.brand img.round{height:88px}
+@media (max-width:640px){header{flex-direction:column;align-items:center;text-align:center}.brand{flex-direction:column;gap:8px}.brand img.round{height:auto;width:min(46vw,170px)}.stats{justify-content:center}.login{margin-top:5vh}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div id="v-login" class="login">
+    <img class="hero-logo" id="logo-r" src="../logo-redonda.png" alt="Dr. Adriano Fabri Domingues">
+    <h1>Pré-Consulta · Recepção</h1>
+    <p class="sub" style="margin-bottom:18px">Envio dos links de pré-consulta aos pacientes</p>
+    <div class="panel">
+      <form id="f-login" autocomplete="off">
+        <label>Senha da recepção<input id="pin" type="password" required maxlength="40" autocomplete="current-password"></label>
+        <label style="display:flex;gap:8px;align-items:center;text-transform:none;letter-spacing:0;font-size:.85rem;font-weight:500"><input id="lembrar" type="checkbox" style="width:auto"> Lembrar neste computador</label>
+        <button class="btn" id="l-btn" type="submit">Entrar</button>
+        <p class="msg" id="l-msg"></p>
+      </form>
+    </div>
+    <p class="lock">As respostas dos pacientes são confidenciais e ficam disponíveis somente para o médico.</p>
+  </div>
+
+  <div id="v-app" hidden>
+    <header>
+      <div class="brand"><span id="logo-slot"><div class="mono">AD</div></span>
+        <div><h1>Pré-Consulta · Recepção</h1><p class="sub">Gere o link após o agendamento e envie pelo WhatsApp</p></div>
+      </div>
+      <div class="stats">
+        <div class="stat"><div class="n" id="st-ag">0</div><div class="l">Aguardando</div></div>
+        <div class="stat"><div class="n" id="st-lb" style="color:var(--late)">0</div><div class="l">Lembrar</div></div>
+        <div class="stat"><div class="n" id="st-ok">0</div><div class="l">Respondidas</div></div>
+        <div class="stat"><button class="btn ghost small" id="sair" type="button">Sair</button></div>
+      </div>
+    </header>
+    <div id="banner" class="banner" hidden></div>
+    <div class="grid">
+      <section class="panel">
+        <h2>Nova pré-consulta</h2>
+        <form id="f-novo" autocomplete="off">
+          <label>Nome completo do paciente<input id="n-nome" required maxlength="120" placeholder="Como no agendamento"></label>
+          <label>WhatsApp<input id="n-whats" required maxlength="25" inputmode="tel" placeholder="(65) 99999-9999"></label>
+          <label>Data da 1ª consulta (opcional)<input id="n-cons" type="date"></label>
+          <button class="btn" id="n-btn" type="submit">Gerar link da pré-consulta</button>
+          <p class="msg" id="n-msg"></p>
+        </form>
+        <div id="novo" class="novo" hidden></div>
+        <p class="hint" style="margin-top:14px" id="validade"></p>
+      </section>
+      <section>
+        <div class="toolbar">
+          <input id="busca" type="search" placeholder="Buscar paciente…">
+          <select id="filtro">
+            <option value="todas">Todas</option>
+            <option value="Enviado">Aguardando resposta</option>
+            <option value="lembrar">Precisam de lembrete</option>
+            <option value="Respondido">Respondidas</option>
+            <option value="Expirado">Expiradas</option>
+            <option value="Cancelado">Canceladas</option>
+          </select>
+          <button class="btn ghost small" id="atualizar" type="button">Atualizar</button>
+        </div>
+        <div id="lista" class="list"><div class="empty"><b>Carregando…</b></div></div>
+      </section>
+    </div>
+  </div>
+</div>
+
+<script>
+const $=id=>document.getElementById(id);
+const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const semAc=s=>String(s||"").normalize("NFD").replace(/[̀-ͯ]/g,"").toUpperCase();
+const br=s=>{if(!s)return"";const[y,m,d]=s.split("-");return`${d}/${m}/${y}`};
+const titulo=s=>String(s||"").toLowerCase().split(" ").map((w,i)=>i&&/^(da|de|do|das|dos|e)$/.test(w)?w:w.charAt(0).toUpperCase()+w.slice(1)).join(" ");
+const txtErro=e=>String(e&&e.message||e).replace(/^(Error|Exception):\s{0,}/,"");
+const API="https://script.google.com/macros/s/AKfycbzX0XnBdDCSeST5yLNth-BQz1PTEXGzFBWRtB8jxhQ6H5jucpc-lpoCk9aTmgtszzcV6w/exec";
+const chamar=(fn,...args)=>fetch(API,{method:"POST",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify({fn,args}),redirect:"follow"})
+  .then(r=>{if(!r.ok)throw new Error("Falha de conexão ("+r.status+").");return r.json()})
+  .then(j=>{if(!j.ok)throw new Error(j.erro||"Erro no servidor.");return j.data})
+  .catch(e=>{throw new Error(/fetch|network|load failed/i.test(String(e&&e.message))?"Sem conexão com o servidor. Verifique a internet e tente de novo.":(e&&e.message)||String(e))});
+const KEY="recepcao_pin";
+let PIN="",itens=[],cfg={},aberto=null,confirmando=null,ocupado=false;
+
+/* ---------- acesso ---------- */
+function lerPin(){try{return localStorage.getItem(KEY)||""}catch(e){return ""}}
+function gravarPin(p){try{localStorage.setItem(KEY,p)}catch(e){}}
+function apagarPin(){try{localStorage.removeItem(KEY)}catch(e){}}
+async function entrar(p,lembrar){
+  $("l-btn").disabled=true; $("l-msg").className="msg ok"; $("l-msg").textContent="Entrando…";
+  try{
+    const r=await chamar("recepcaoEntrar",p);
+    PIN=p; if(lembrar) gravarPin(p);
+    const lr=$("logo-r");
+    if(lr) $("logo-slot").innerHTML=`<img class="round" src="${lr.src}" alt="">`; else if(r.logo) $("logo-slot").innerHTML=`<img src="${r.logo}" alt="">`;
+    $("v-login").hidden=true; $("v-app").hidden=false; atualizar();
+  }catch(e){$("l-msg").className="msg err";$("l-msg").textContent=txtErro(e).replace(/^SENHA:\s/,"");apagarPin()}
+  $("l-btn").disabled=false;
+}
+$("f-login").addEventListener("submit",e=>{e.preventDefault();entrar($("pin").value.trim(),$("lembrar").checked)});
+$("sair").addEventListener("click",()=>{apagarPin();PIN="";location.reload()});
+function tratarErro(e){
+  const t=txtErro(e);
+  if(/^SENHA:/.test(t)){apagarPin();$("v-app").hidden=true;$("v-login").hidden=false;$("l-msg").className="msg err";$("l-msg").textContent="A senha mudou. Entre novamente.";return}
+  $("banner").textContent=t;$("banner").hidden=false;
+}
+
+/* ---------- dados ---------- */
+function aplicar(d){
+  itens=d.itens||[]; cfg=d.config||{};
+  $("validade").textContent=`Cada link vale ${cfg.dias||30} dias e só pode ser respondido uma vez.`;
+  $("banner").hidden=true; render();
+}
+async function atualizar(auto){
+  if(ocupado) return;
+  try{const d=await chamar("recepcaoCarregar",PIN); if(auto&&(ocupado||confirmando)) return; aplicar(d)}catch(e){tratarErro(e)}
+}
+
+/* ---------- whatsapp ---------- */
+function mensagem(it){
+  const pn=titulo(it.nome).split(" ")[0];
+  return String(cfg.msg||"").replace(/\{nome\}/g,pn).replace(/\{link\}/g,it.link).replace(/\{dias\}/g,cfg.dias||30).replace(/\{medico\}/g,cfg.medico||"");
+}
+const waUrl=it=>"https:\/\/wa.me/"+it.whats+"?text="+encodeURIComponent(mensagem(it));
+function msgLembrete(it){
+  const pn=titulo(it.nome).split(" ")[0];
+  return String(cfg.msgLembrete||"").replace(/\{nome\}/g,pn).replace(/\{link\}/g,it.link).replace(/\{expira\}/g,(it.expira||"").split(" ")[0]).replace(/\{dias\}/g,cfg.dias||30).replace(/\{medico\}/g,cfg.medico||"");
+}
+const waLembrete=it=>"https:\/\/wa.me/"+it.whats+"?text="+encodeURIComponent(msgLembrete(it));
+const fmtWhats=w=>{const d=String(w||"").replace(/^55/,"");return d.length===11?`(${d.slice(0,2)}) ${d.slice(2,7)}-${d.slice(7)}`:d.length===10?`(${d.slice(0,2)}) ${d.slice(2,6)}-${d.slice(6)}`:w};
+async function copiar(t,btn){
+  let ok=false; try{await navigator.clipboard.writeText(t);ok=true}catch(e){}
+  if(!ok){const ta=document.createElement("textarea");ta.value=t;ta.style.position="fixed";ta.style.opacity="0";document.body.appendChild(ta);ta.select();try{ok=document.execCommand("copy")}catch(e){}ta.remove()}
+  if(btn){const o=btn.textContent;btn.textContent=ok?"Copiado ✓":"Selecione e copie";setTimeout(()=>btn.textContent=o,1600)}
+}
+function linkAcoes(it){
+  return `<div class="linkbox">${esc(it.link)}</div>
+  <div class="actions"><a class="btn wa small" href="${esc(waUrl(it))}">Enviar pelo WhatsApp</a>
+  <button class="btn ghost small" data-act="copy-msg" data-id="${esc(it.token)}" type="button">Copiar mensagem</button>
+  <button class="btn ghost small" data-act="copy-link" data-id="${esc(it.token)}" type="button">Copiar link</button></div>`;
+}
+
+/* ---------- nova ---------- */
+$("f-novo").addEventListener("submit",async e=>{
+  e.preventDefault();
+  const m=$("n-msg"); m.className="msg ok"; m.textContent="Gerando…"; $("n-btn").disabled=true; ocupado=true;
+  try{
+    const d=await chamar("recepcaoNova",PIN,{nome:$("n-nome").value,whats:$("n-whats").value,consulta:$("n-cons").value});
+    ocupado=false; aplicar(d);
+    const it=itens.find(x=>x.token===d.novoToken);
+    $("novo").innerHTML=`<div class="t">Link criado para ${esc(titulo(it.nome))}</div>${linkAcoes(it)}<p class="hint">O botão do WhatsApp abre a conversa com ${esc(fmtWhats(it.whats))} e a mensagem pronta.</p>`;
+    $("novo").hidden=false; m.textContent=""; $("n-nome").value=""; $("n-whats").value=""; $("n-cons").value="";
+  }catch(err){m.className="msg err";m.textContent=txtErro(err).replace(/^SENHA:\s/,"")}
+  $("n-btn").disabled=false; ocupado=false;
+});
+
+/* ---------- lista ---------- */
+const ST={Enviado:["warn","aguardando"],Respondido:["ok","respondida"],Expirado:["late","expirado"],Cancelado:["mut","cancelado"]};
+$("busca").addEventListener("input",render); $("filtro").addEventListener("change",render);
+$("atualizar").addEventListener("click",()=>atualizar());
+document.addEventListener("click",e=>{const t=e.target.closest("[data-act]");if(t)acao(t)});
+async function acao(t){
+  const {act,id}=t.dataset, it=itens.find(x=>x.token===id);
+  if(act==="toggle"){aberto=aberto===id?null:id;confirmando=null;render();return}
+  if(act==="copy-msg") return copiar(mensagem(it),t);
+  if(act==="copy-link") return copiar(it.link,t);
+  if(act==="ask"){confirmando=id;render();return}
+  if(act==="lembrar"){
+    ocupado=true;
+    try{const d=await chamar("recepcaoLembrete",PIN,id); ocupado=false; aplicar(d)}catch(err){tratarErro(err)}
+    ocupado=false; render(); return;
+  }
+  if(act==="cancel"){confirmando=null;render();return}
+  const fn={renovar:"recepcaoRenovar",cancelar:"recepcaoCancelar"}[act]; if(!fn) return;
+  ocupado=true; t.disabled=true; confirmando=null;
+  try{const d=await chamar(fn,PIN,id); ocupado=false; aplicar(d)}catch(err){tratarErro(err)}
+  ocupado=false; render();
+}
+const chave=i=>{const m=String(i.respondido||i.criado).match(/(\d{2})\/(\d{2})\/(\d{4}) (\d{2}:\d{2})/);return m?m[3]+m[2]+m[1]+m[4]:""};
+function render(){
+  $("st-ag").textContent=itens.filter(i=>i.status==="Enviado").length;
+  $("st-ok").textContent=itens.filter(i=>i.status==="Respondido").length;
+  $("st-lb").textContent=itens.filter(i=>i.lembrar).length;
+  const q=semAc($("busca").value.trim()), f=$("filtro").value, ordem={Enviado:0,Respondido:1,Expirado:2,Cancelado:3};
+  const vis=itens.filter(i=>(!q||semAc(i.nome).includes(q))&&(f==="todas"||(f==="lembrar"?i.lembrar:i.status===f))).sort((a,b)=>(b.lembrar-a.lembrar)||(ordem[a.status]-ordem[b.status])||chave(b).localeCompare(chave(a)));
+  if(!itens.length){$("lista").innerHTML=`<div class="empty"><b>Nenhum link gerado ainda</b>Use o formulário ao lado após cada agendamento.</div>`;return}
+  if(!vis.length){$("lista").innerHTML=`<div class="empty"><b>Nada encontrado</b>Ajuste a busca ou o filtro.</div>`;return}
+  $("lista").innerHTML=vis.map(it=>{
+    const open=aberto===it.token, tk=esc(it.token), [cls,txt]=ST[it.status]||["mut",it.status];
+    const meta=it.status==="Respondido"?`Respondida em ${it.respondido}`:it.status==="Enviado"?`Enviado em ${it.criado.split(" ")[0]} · expira ${it.expira.split(" ")[0]}${it.lembrete?` · lembrete ${it.lembrete.split(" ")[0]}`:""}`:`Criado em ${it.criado.split(" ")[0]}`;
+    const head=`<button class="pt-head" data-act="toggle" data-id="${tk}"><div><div class="pt-name">${esc(titulo(it.nome))}</div><div class="pt-meta">${meta}${it.consulta?` · consulta ${br(it.consulta)}`:""}</div></div><span style="display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end">${it.lembrar?`<span class="chip late">lembrar</span>`:""}<span class="chip ${cls}">${txt}</span></span></button>`;
+    if(!open) return `<div class="pt">${head}</div>`;
+    let body=`<div class="pt-meta">WhatsApp: <b style="color:var(--ink)">${esc(fmtWhats(it.whats))}</b></div>`;
+    if(it.status==="Respondido") body+=`<p class="hint">O paciente já respondeu. As respostas ficam disponíveis somente para o médico.</p>`;
+    else{
+      if(it.lembrar&&it.link) body+=`<div class="lemb"><b>Sem resposta há ${it.diasSemResposta} dia${it.diasSemResposta===1?"":"s"}${it.lembrete?` (último lembrete em ${esc(it.lembrete.split(" ")[0])})`:""}.</b> Envie um lembrete com a mensagem pronta:
+        <div class="actions"><a class="btn wa small" data-act="lembrar" data-id="${tk}" href="${esc(waLembrete(it))}">Lembrar paciente pelo WhatsApp</a></div></div>`;
+      else if(it.status==="Enviado"&&it.lembrete) body+=`<p class="hint">Lembrete enviado em ${esc(it.lembrete)}.</p>`;
+      if(it.link) body+=linkAcoes(it);
+      body+=`<div class="actions"><button class="btn small ghost" data-act="renovar" data-id="${tk}">${it.status==="Enviado"?"Renovar prazo":"Reativar link"} (+${cfg.dias||30} dias)</button>
+        ${it.status==="Enviado"?(confirmando===it.token?`<span class="confirm">Cancelar este link? <button class="btn small danger" data-act="cancelar" data-id="${tk}">Cancelar link</button><button class="btn small ghost" data-act="cancel">Voltar</button></span>`:`<button class="btn small ghost" data-act="ask" data-id="${tk}">Cancelar link</button>`):""}</div>`;
+    }
+    return `<div class="pt">${head}<div class="pt-body">${body}</div></div>`;
+  }).join("");
+}
+
+const salvo=lerPin(); if(salvo) entrar(salvo,true);
+setInterval(()=>{if(PIN&&document.visibilityState==="visible"&&!confirmando) atualizar(true)},60000);
+</script>
+</body>
+</html>
