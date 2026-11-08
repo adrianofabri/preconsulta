@@ -174,10 +174,12 @@ const ETAPAS=[
   {id:"bariatrica",t:"radio",q:"Já fez cirurgia bariátrica?",op:["Não","Sim"],c2:1,obr:1,pr:"BARIÁTRICA"},
   {id:"bariatrica_txt",t:"texto",q:"Qual cirurgia e em que ano?",ph:"Ex.: bypass, 2019",pr:"TIPO/ANO",cond:s=>s.bariatrica==="Sim"}
  ]},
- {tit:"Sua saúde",sub:"Doenças, remédios e histórico familiar.",campos:[
-  {id:"doencas",t:"multi",q:"Você tem ou já teve alguma destas condições?",obr:1,pr:"COMORBIDADES",
-   op:["Nenhuma","Pressão alta","Diabetes","Pré-diabetes / resistência à insulina","Colesterol ou triglicerídeos altos","Gordura no fígado","Hipotireoidismo","Síndrome dos ovários policísticos","Apneia do sono","Refluxo / gastrite","Ansiedade","Depressão","Problema nos rins","Outra"]},
-  {id:"doencas_txt",t:"texto",q:"Quais outras condições?",pr:"OUTRAS",cond:s=>(s.doencas||[]).includes("Outra")},
+ {tit:"Comorbidades e doenças prévias",sub:"Algumas condições mudam a escolha dos medicamentos. Responda com atenção.",campos:[
+  {id:"seguranca",t:"multi",q:"Você tem ou já teve alguma destas condições?",h:"Pode marcar mais de uma.",obr:1,pr:"COMORBIDADES",
+   op:["Nenhuma destas","Diabetes","Pré-diabetes / resistência à insulina","Pressão alta (hipertensão)","Colesterol ou triglicerídeos altos","Gordura no fígado","Hipotireoidismo","Síndrome dos ovários policísticos","Apneia do sono","Refluxo / gastrite","Ansiedade ou depressão","Pancreatite (inflamação no pâncreas)","Câncer medular de tireoide – em mim ou na família","Neoplasia endócrina múltipla tipo 2 (NEM 2) – em mim ou na família","Pedra na vesícula ou cirurgia de retirada da vesícula","Gastroparesia (estômago que esvazia devagar)","Retinopatia diabética (problema na retina causado pelo diabetes)","Doença renal crônica ou hemodiálise","Transtorno alimentar (anorexia, bulimia ou compulsão alimentar)","Outra"]},
+  {id:"seguranca_txt",t:"texto",q:"Conte um pouco mais (qual outra condição, ano, detalhes)",ph:"Ex.: pancreatite em 2020; câncer de tireoide no pai",pr:"DETALHES",cond:s=>(s.seguranca||[]).some(x=>!/^Nenhuma/.test(x))}
+ ]},
+ {tit:"Remédios e histórico familiar",sub:"",campos:[
   {id:"medicacoes",t:"area",q:"Remédios que usa atualmente",h:"Nome e dose. Se não usa nenhum, escreva “nenhum”.",obr:1,pr:"MEDICAÇÕES EM USO"},
   {id:"suplementos",t:"area",q:"Suplementos, vitaminas ou fitoterápicos que usa",pr:"SUPLEMENTOS"},
   {id:"alergias",t:"texto",q:"Alergias a remédios ou alimentos",ph:"Se não tem, deixe em branco",pr:"ALERGIAS"},
@@ -185,37 +187,14 @@ const ETAPAS=[
   {id:"familia",t:"multi",q:"Algum familiar próximo (pais ou irmãos) tem:",pr:"ANTECEDENTES FAMILIARES",
    op:["Obesidade","Diabetes","Pressão alta","Infarto ou AVC","Câncer","Doença da tireoide","Nenhum / não sei"]}
  ]},
- {tit:"Segurança do tratamento",sub:"Algumas condições mudam a escolha dos medicamentos. Responda com atenção.",campos:[
-  {id:"seguranca",t:"multi",q:"Você tem ou já teve alguma destas situações?",h:"Pode marcar mais de uma.",obr:1,pr:"SEGURANÇA (GLP-1/TIRZEPATIDA)",
-   op:["Nenhuma destas","Pancreatite (inflamação no pâncreas)","Câncer medular de tireoide – em mim ou na família","Neoplasia endócrina múltipla tipo 2 (NEM 2) – em mim ou na família","Pedra na vesícula ou cirurgia de retirada da vesícula","Gastroparesia (estômago que esvazia devagar)","Retinopatia diabética (problema na retina causado pelo diabetes)","Doença renal crônica ou hemodiálise","Transtorno alimentar (anorexia, bulimia ou compulsão alimentar)"]},
-  {id:"seguranca_txt",t:"texto",q:"Conte um pouco mais",ph:"Ex.: pancreatite em 2020; câncer de tireoide no pai",pr:"DETALHES",cond:s=>(s.seguranca||[]).some(x=>!/^Nenhuma/.test(x))}
- ]},
- {tit:"Rotina e hábitos",sub:"Atividade física, sono e outros hábitos.",campos:[
-  {id:"atividade",t:"radio",q:"Pratica atividade física?",obr:1,pr:"ATIVIDADE FÍSICA",op:["Não pratico","1 a 2 vezes por semana","3 a 4 vezes por semana","5 vezes ou mais"]},
-  {id:"atividade_tipo",t:"texto",q:"Qual atividade?",ph:"Ex.: musculação, caminhada",pr:"MODALIDADE",cond:s=>s.atividade&&s.atividade!=="Não pratico"},
-  {id:"sono_horas",t:"radio",q:"Quantas horas dorme por noite?",obr:1,pr:"SONO",op:["Menos de 5 horas","5 a 6 horas","7 a 8 horas","Mais de 8 horas"],c2:1},
-  {id:"sono_qual",t:"radio",q:"Como é a qualidade do seu sono?",obr:1,pr:"QUALIDADE DO SONO",op:["Boa","Regular","Ruim"]},
-  {id:"ronco",t:"radio",q:"Ronca ou já disseram que você para de respirar dormindo?",pr:"RONCO/APNEIA",op:["Não","Sim","Não sei"]},
-  {id:"alcool",t:"radio",q:"Bebida alcoólica",obr:1,pr:"ETILISMO",op:["Não bebo","Até 1 vez por semana","2 a 3 vezes por semana","Quase todos os dias"]},
-  {id:"fumo",t:"radio",q:"Cigarro / vape",obr:1,pr:"TABAGISMO",op:["Não","Sim","Ex-fumante"]},
-  {id:"agua",t:"radio",q:"Quanta água bebe por dia?",pr:"INGESTA HÍDRICA",op:["Menos de 1 litro","1 a 2 litros","Mais de 2 litros"]},
-  {id:"intestino",t:"radio",q:"Como funciona seu intestino?",pr:"HÁBITO INTESTINAL",op:["Todos os dias","A cada 2 ou 3 dias","Menos que isso","Diarreia frequente"]}
- ]},
  {tit:"Saúde da mulher",sub:"",cond:F,campos:[
   {id:"gestacao",t:"radio",q:"Está grávida, amamentando ou planejando engravidar nos próximos 6 meses?",obr:1,pr:"GESTAÇÃO/LACTAÇÃO",op:["Não","Estou grávida","Estou amamentando","Planejo engravidar"],c2:1},
   {id:"ciclo",t:"radio",q:"Como está seu ciclo menstrual?",pr:"CICLO",op:["Regular","Irregular","Não menstruo (menopausa)","Não menstruo (anticoncepcional contínuo / DIU)"]},
   {id:"hormonio",t:"texto",q:"Usa anticoncepcional ou reposição hormonal? Qual?",pr:"CONTRACEPÇÃO/TRH"},
   {id:"gestacoes",t:"texto",q:"Número de gestações",ph:"Ex.: 2",pr:"GESTAÇÕES"}
  ]},
- {tit:"Alimentação",sub:"Sua rotina alimentar.",campos:[
-  {id:"refeicoes",t:"radio",q:"Quantas refeições faz por dia?",obr:1,pr:"REFEIÇÕES/DIA",op:["1 a 2","3","4 a 5","6 ou mais"],c2:1},
-  {id:"come_fora",t:"radio",q:"Come fora de casa ou pede delivery?",pr:"REFEIÇÕES FORA",op:["Raramente","Algumas vezes por semana","Quase todos os dias"]},
-  {id:"restricoes",t:"texto",q:"Alimentos que não come ou não tolera",pr:"RESTRIÇÕES/AVERSÕES"},
-  {id:"dia_alimentar",t:"area",q:"Descreva um dia comum de alimentação",h:"O que costuma comer no café da manhã, almoço, lanches e jantar.",pr:"DIA ALIMENTAR"}
- ]},
  {tit:"Seu jeito de comer",sub:"Marque com que frequência cada situação acontece com você. Não existe resposta certa ou errada.",campos:[{id:"efca",t:"efca"}]},
- {tit:"Exames e finalização",sub:"Quase lá!",campos:[
-  {id:"exames",t:"radio",q:"Fez exames de sangue nos últimos 6 meses?",pr:"EXAMES RECENTES",op:["Sim","Não"],c2:1},
+ {tit:"Exames (opcional)",sub:"Última etapa! Se não tiver exames, é só enviar.",campos:[
   {id:"anexos",t:"anexos",q:"Anexe seus exames recentes",h:"PDF ou fotos legíveis. Opcional."},
   {id:"observacoes",t:"area",q:"Há algo mais que gostaria de contar ao médico?",pr:"OBSERVAÇÕES DO PACIENTE"}
  ]}
@@ -306,7 +285,7 @@ function campoHtml(c){
   if(c.t==="efca") return EFCA_ITENS.map((txt,i)=>`<div class="ef" id="ef-${i}"><div class="q"><b>${i+1}.</b>${esc(txt)}</div><div class="lik">${LIKERT.map((l,k)=>`<button type="button" data-ef="${i}" data-v="${k+1}" aria-pressed="${S.efca[i]===k+1}">${l}</button>`).join("")}</div></div>`).join("");
   if(c.t==="radio"||c.t==="multi"){
     const multi=c.t==="multi", sel=multi?(v||[]):v;
-    let ops=c.op; if(c.id==="doencas"&&!F(S)) ops=ops.filter(o=>!/ovários/.test(o));
+    let ops=c.op; if((c.id==="doencas"||c.id==="seguranca")&&!F(S)) ops=ops.filter(o=>!/ovários/.test(o));
     return `<div class="f" data-c="${c.id}">${q}<div class="ops${c.c2?" c2":""}">${ops.map(o=>`<button type="button" class="op${multi?" m":""}" data-op="${esc(c.id)}" data-val="${esc(o)}" aria-pressed="${multi?sel.includes(o):sel===o}">${esc(o)}</button>`).join("")}</div></div>`;
   }
   if(c.t==="anexos") return `<div class="f">${q}<label class="drop" for="arq"><b>Toque para escolher arquivos</b>PDF ou fotos · até 10 arquivos de 10 MB</label><input id="arq" type="file" accept="application/pdf,image/${"*"}" multiple hidden><ul class="files" id="files"></ul></div>`;
