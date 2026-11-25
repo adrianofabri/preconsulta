@@ -7,6 +7,9 @@
 <meta name="referrer" content="no-referrer">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#f6f3ee" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#111318" media="(prefers-color-scheme: dark)">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Marcellus&family=Instrument+Sans:wght@400;500;600;700&display=swap">
 <style>
@@ -84,6 +87,17 @@ input:focus,textarea:focus,button:focus-visible{outline:2px solid var(--accent);
 .consent input{width:20px;height:20px;flex:none;margin:1px 0 0;padding:0;accent-color:var(--accent)}
 .consent.err{border-color:var(--late);background:var(--late-soft)}
 .foot{font-size:.72rem;color:var(--muted);text-align:center;margin-top:26px}
+/* Tema escuro MedTech (tons da Prescrição Metabólica). Segue a preferência do aparelho do paciente; só troca cores. */
+@media screen and (prefers-color-scheme:dark){
+:root{color-scheme:dark;--bg:#111318;--surface:#1C2026;--surface2:#23272E;--ink:#F7F6F2;--muted:#B4BAC4;--line:#4A505A;--accent:#C5A46D;--accent-ink:#111318;--accent-soft:#2D2A24;--gold:#AD863B;--ok:#9FD3AC;--ok-soft:#1F3326;--late:#F2A6A0;--late-soft:#3A2224}
+.op::before{border-color:#6B727D}
+.op[aria-pressed="true"]::before{background:var(--accent) radial-gradient(circle,#111318 0 3px,transparent 4px)}
+.op.m[aria-pressed="true"]::before{background:var(--accent) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3.5 8.5l3 3 6-7' fill='none' stroke='%23111318' stroke-width='2'/%3E%3C/svg%3E") center/14px no-repeat}
+.lik button[aria-pressed="true"],.btn{color:#111318}
+.btn.ghost{color:var(--accent)}
+.nav{background:rgba(17,19,24,.96)}
+.drop{border-color:#6E5D3F}
+}
 </style>
 </head>
 <body>
