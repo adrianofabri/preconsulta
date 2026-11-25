@@ -66,10 +66,21 @@ input:focus,select:focus,button:focus-visible{outline:2px solid var(--accent);ou
 .hero-logo{display:block;width:min(62vw,230px);height:auto;margin:0 auto 14px}
 .brand img.round{height:88px}
 @media (max-width:640px){header{flex-direction:column;align-items:center;text-align:center}.brand{flex-direction:column;gap:8px}.brand img.round{height:auto;width:min(46vw,170px)}.stats{justify-content:center}.login{margin-top:5vh}}
+/* Tema escuro MedTech (tons da Prescrição Metabólica). Botão no topo; escolha salva neste aparelho. */
+.tema-row{display:flex;justify-content:flex-end;margin:-8px 0 8px}
+@media print{.tema-row{display:none}}
+:root[data-theme="dark"]{color-scheme:dark;--bg:#111318;--surface:#1C2026;--surface2:#23272E;--ink:#F7F6F2;--muted:#B4BAC4;--line:#4A505A;--accent:#C5A46D;--accent-soft:#2D2A24;--gold:#AD863B;--ok:#9FD3AC;--ok-soft:#1F3326;--warn:#F3CF85;--warn-soft:#3A3020;--late:#F2A6A0;--late-soft:#3A2224;--info:#A9C7E2;--info-soft:#1E2B38}
+:root[data-theme="dark"] .btn{color:#111318}
+:root[data-theme="dark"] .btn.ghost{color:var(--accent)}
+:root[data-theme="dark"] .btn.wa{background:#9FD3AC}
+:root[data-theme="dark"] .chip.mut{background:#343941}
+:root[data-theme="dark"] .lemb{border-color:#6B3A36;border-left-color:var(--late)}
 </style>
+<script>try{var t=localStorage.getItem("medtech-theme");if(t!=="light"&&(t==="dark"||matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark")}catch(e){}</script>
 </head>
 <body>
 <div class="wrap">
+  <div class="tema-row"><button class="btn ghost small" id="tema-btn" type="button">Modo escuro</button></div>
   <div id="v-login" class="login">
     <img class="hero-logo" id="logo-r" src="../logo-redonda.png" alt="Dr. Adriano Fabri Domingues">
     <h1>Pré-Consulta · Recepção</h1>
@@ -269,6 +280,12 @@ function render(){
 
 const salvo=lerPin(); if(salvo) entrar(salvo,true);
 setInterval(()=>{if(PIN&&document.visibilityState==="visible"&&!confirmando) atualizar(true)},60000);
+</script>
+<script>
+(function(){var b=document.getElementById("tema-btn"),r=document.documentElement;
+function ap(d){if(d)r.setAttribute("data-theme","dark");else r.removeAttribute("data-theme");b.textContent=d?"Modo claro":"Modo escuro";b.setAttribute("aria-pressed",d?"true":"false")}
+ap(r.getAttribute("data-theme")==="dark");
+b.addEventListener("click",function(){var d=r.getAttribute("data-theme")!=="dark";ap(d);try{localStorage.setItem("medtech-theme",d?"dark":"light")}catch(e){}})})();
 </script>
 </body>
 </html>
